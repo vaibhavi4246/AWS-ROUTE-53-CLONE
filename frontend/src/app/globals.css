@@ -1,0 +1,89 @@
+/* Cloudscape's global styles supply typography, colours and dark mode; only page-level resets live here. */
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+/* Console header. `awsui-context-top-navigation` (set on the element) restyles Cloudscape controls for the dark bar. */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 16px;
+  background: #0f1b2a;
+  border-bottom: 1px solid #424650;
+}
+.top-bar-logo,
+.top-bar-service {
+  display: inline-flex;
+  line-height: 0;
+}
+.top-bar-divider {
+  align-self: stretch;
+  margin: 12px 0;
+  border-left: 1px solid #5f6b7a;
+}
+.top-bar-grid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.top-bar-grid:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.top-bar-grid:focus-visible {
+  outline: 2px solid #44b9d6;
+  outline-offset: 1px;
+}
+.top-bar-search {
+  position: relative;
+  flex: 0 1 520px;
+  min-width: 140px;
+}
+.top-bar-hint {
+  position: absolute;
+  right: 42px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: inherit;
+  font-size: 13px;
+  color: #b6bec9;
+  pointer-events: none;
+}
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.top-bar-account {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 15px;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* Login screen only (no AppLayout around it). */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
