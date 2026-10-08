@@ -1,0 +1,22 @@
+# Render blueprint: New + > Blueprint, pick this repo. Deploys the FastAPI backend.
+# The frontend is deployed separately on Vercel (root directory: frontend).
+services:
+  - type: web
+    name: aws-route53-clone-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /docs
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false # set to the Vercel URL after the frontend is deployed
+      - key: DATABASE_URL
+        value: sqlite:///./route53.db # free tier has no disk: data resets on restart; demo login reseeds it
+      - key: DEMO_MODE
+        value: "true"

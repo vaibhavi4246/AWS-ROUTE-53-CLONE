@@ -183,6 +183,8 @@ List endpoints return `{ "items": [...], "total": n, "page": 1, "page_size": 10 
 
 ## Deployment
 
+The repo includes a Render blueprint (`render.yaml`) for the backend; the frontend deploys on Vercel with root directory `frontend`.
+
 **Backend (Render or similar).** Root directory `backend`, build `pip install -r requirements.txt`, start `python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`. Set `SECRET_KEY`, `FRONTEND_URL` and `DATABASE_URL`. SQLite needs a persistent disk to survive restarts and redeploys (point `DATABASE_URL` at it, e.g. `sqlite:////data/route53.db`); without one the data resets. Check which instance types your host offers disks for.
 
 **Frontend (Vercel or similar).** Root directory `frontend`. Either set `NEXT_PUBLIC_API_URL` to the backend URL, or, to avoid third-party-cookie blocking in Safari and private windows when the two apps are on different sites, set `API_PROXY_TARGET` to the backend URL at build time and leave `NEXT_PUBLIC_API_URL` unset. The browser then talks to `/api/*` on the frontend's own domain.
@@ -197,5 +199,5 @@ List endpoints return `{ "items": [...], "total": n, "page": 1, "page_size": 10 
 - **Hosted zone edit** changes the description only, as in Route 53.
 - **Private zones** record a VPC ID and region but are not validated against AWS.
 - **Alias records** are exported to BIND as a comment because BIND has no alias concept.
-- The UI uses the public Cloudscape components (Apache-2.0). The top-bar "aws" wordmark and the Route 53 tile are simple SVG approximations drawn for this project, not AWS's official artwork. In the top bar, CloudShell, the apps grid and notifications are buttons that only show an explanatory message, and the region selector offers just "Global" because Route 53 is a global service.
+- The UI uses the public Cloudscape components (Apache-2.0). The favicon and the Route 53 tile use the Route 53 service icon (`frontend/public/route53-logo.webp`); the "aws" wordmark in the top bar is a simple approximation. In the top bar, CloudShell, the apps grid and notifications are buttons that only show an explanatory message, and the region selector offers just "Global" because Route 53 is a global service.
 - SQLite is single-writer; this is a demo-scale design.

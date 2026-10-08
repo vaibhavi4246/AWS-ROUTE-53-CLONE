@@ -10,7 +10,7 @@ const proxyTarget = process.env.API_PROXY_TARGET?.replace(/\/$/, '');
 const nextConfig: NextConfig = {
   reactCompiler: true,
   env: { NEXT_PUBLIC_API_PROXY: proxyTarget ? 'true' : '' },
-  // Some browsers request /favicon.ico regardless of <link rel="icon">; point them at the SVG icon.
+  // Some browsers request /favicon.ico regardless of <link rel="icon">; point them at the logo.
   async redirects() {
     return [{ source: '/favicon.ico', destination: '/route53-logo.webp', permanent: false }];
   },
