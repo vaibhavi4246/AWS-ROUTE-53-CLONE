@@ -6,11 +6,11 @@ A full-stack clone of the Amazon Route 53 console: hosted zones and DNS records 
 
 | | |
 | --- | --- |
-| Frontend | https://aws-route53-clone-liard.vercel.app |
-| Backend API | https://aws-route53-clone-backend.onrender.com |
-| Interactive API docs | https://aws-route53-clone-backend.onrender.com/docs |
+| Frontend | https://aws-route-53-clone-one.vercel.app |
+| Backend API | https://aws-route53-clone-backend-ovgy.onrender.com |
+| Interactive API docs | https://aws-route53-clone-backend-ovgy.onrender.com/docs |
 
-Sign in with **`admin` / `admin`**. The free-tier backend sleeps when idle, so the first request after a pause can take about a minute.
+Click **Try the demo** on the login page, or sign in with **`admin` / `admin`**. The free-tier backend sleeps when idle, so the first request after a pause can take about a minute.
 
 ## Features
 
