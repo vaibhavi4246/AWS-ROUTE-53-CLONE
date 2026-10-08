@@ -187,6 +187,8 @@ The repo includes a Render blueprint (`render.yaml`) for the backend; the fronte
 
 **Backend (Render or similar).** Root directory `backend`, build `pip install -r requirements.txt`, start `python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`. Set `SECRET_KEY`, `FRONTEND_URL` and `DATABASE_URL`. SQLite needs a persistent disk to survive restarts and redeploys (point `DATABASE_URL` at it, e.g. `sqlite:////data/route53.db`); without one the data resets. Check which instance types your host offers disks for.
 
+**Keeping the free backend awake.** `.github/workflows/keep-alive.yml` pings `GET /health` every 10 minutes. Add a repository variable `BACKEND_URL` (Settings, Secrets and variables, Actions, Variables) set to the backend URL to enable it. The ping prevents idle sleep but not restarts, so the SQLite data still resets on a free instance.
+
 **Frontend (Vercel or similar).** Root directory `frontend`. Either set `NEXT_PUBLIC_API_URL` to the backend URL, or, to avoid third-party-cookie blocking in Safari and private windows when the two apps are on different sites, set `API_PROXY_TARGET` to the backend URL at build time and leave `NEXT_PUBLIC_API_URL` unset. The browser then talks to `/api/*` on the frontend's own domain.
 
 ## Assumptions, mocked parts and limitations
